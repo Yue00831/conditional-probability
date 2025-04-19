@@ -9,7 +9,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 model_scorer = scorer.IncrementalLMScorer("distilgpt2", device=device)
 
 # Load dataset
-input_file = "/home/li4207/Yue_projects/LLM_quantifer_scope/UNNU_210/UNNU_all420_translated_uneva.xlsx"
+input_file = "/your input file path/your_dataset_file.xlsx"
 df = pd.read_excel(input_file)
 
 def calculate_conditional_probability(context, target):
@@ -23,10 +23,10 @@ def calculate_conditional_probability(context, target):
 
 # Compute conditional probability for each row
 df["log_conditional_probability"] = df.apply(lambda row: 
-    calculate_conditional_probability(row["Chinese_context"], row["Chinese_target"]), axis=1)
+    calculate_conditional_probability(row["English_context"], row["English_target"]), axis=1)
 
 # Save results
-output_file = "/home/li4207/Yue_projects/LLM_quantifer_scope/UNNU_210/UNNU_all420_translated_uneva_distilgptEn_Chinese.xlsx"
+output_file = "/your output file path/your_result_file.xlsx"
 df.to_excel(output_file, index=False)
 
 print(f"Saved results to {output_file}")

@@ -1,0 +1,1 @@
+This repository provides Python code to compute the conditional log probability (condP) of a target sentence given a context sentence. The surprisal of the target sentence can be directly obtained as the negative of this conditional probability (surprisal = -condP).
